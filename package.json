@@ -1,0 +1,23 @@
+{
+  "name": "starter_code",
+  "version": "1.0.0",
+  "description": "Fyyur -----",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Leo/FYYUR-PROJECT-1-ALX-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Leo/FYYUR-PROJECT-1-ALX-/issues"
+  },
+  "homepage": "https://github.com/The-Leo/FYYUR-PROJECT-1-ALX-#readme",
+  "dependencies": {
+    "bootstrap": "^3.4.1"
+  }
+}
