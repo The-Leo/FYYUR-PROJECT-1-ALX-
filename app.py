@@ -124,23 +124,7 @@ def search_venues():
       "count": len(search_response),
       "data": data
   }
-  return render_template('pages/search_venues.html', results=response, search_term=request.form.get('search_term', ''))
-
-#  search_term = request.form.get('search_term', '')
-  # search_result = db.session.query(Venue).filter(Venue.name.ilike(f"%{search_term}%")).all()
-  # data = []
-  # for result in search_result:
-  #   data.append({
-  #     "id": result.id,
-  #     "name": result.name,
-  #     "num_upcoming_shows": len(db.session.query(Show).filter(Show.venue_id==result.id).filter(Show.start_time > datetime.now()).all())
-  #   })
-
-  # response={
-  #   "count": len(search_result),
-  #   "data": data,
-  # }
-  
+  return render_template('pages/search_venues.html', results=response, search_term=request.form.get('search_term', '')) 
 
 
 @app.route('/venues/<int:venue_id>')
@@ -310,20 +294,6 @@ def search_artists():
                 "count": len(artists),
                 "data": artist_list
             }
-    # search_term = request.form.get('search_term', '')
-    # search_result = db.session.query(Artist).filter(Artist.name.ilike(f'%{search_term}%')).all()
-    # data = []
-    # for result in search_result:
-    #   data.append({
-    #     "id": result.id,
-    #     "name": result.name,
-    #     "num_upcoming_shows": len(db.session.query(Show).filter(Show.artist_id==result.id).filter(Show.start_time > datetime.isoformat(datetime.now())).all()),
-    #   })
-
-    # response={
-    #   "count": len(search_result),
-    #   "data": data
-    #   }
     return render_template('pages/search_artists.html', results=response, search_term=request.form.get('search_term', ''))
 
 
