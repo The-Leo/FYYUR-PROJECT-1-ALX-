@@ -2,7 +2,6 @@
 # Models.
 #----------------------------------------------------------------------------# 
 from flask_sqlalchemy import SQLAlchemy
-import datetime as dt
 
 
 # TODO:DONE connect to a local postgresql database - my db name is fyyurapp
@@ -27,8 +26,7 @@ class Venue(db.Model):
     seeking_description = db.Column(db.String(), nullable=False)
     website_link = db.Column(db.String(120))
     shows = db.relationship('Show', backref='Venue', lazy=True)
-    created_date = db.Column(db.DateTime, nullable=False,
-                             default=dt.datetime.now())
+  
 def __repr__(self):
     return f'<Venue ID: {self.id} name: {self.name}, city: {self.city}, state: {self.state}, phone: {self.phone}, image_link: {self.image_link}, facebook_link: {self.facebook_link}, genres: {self.genres}, {self.seeking_talent}>'
 
@@ -50,8 +48,6 @@ class Artist(db.Model):
     seeking_talent = db.Column(db.Boolean, default=False)
     website_link = db.Column(db.String(120))
     seeking_description = db.Column(db.String(500), nullable=False)
-    created_date = db.Column(db.DateTime, nullable=False,
-                             default=dt.datetime.now())
     shows = db.relationship('Show', backref='Artist', lazy=True)
 
 def __repr__(self):
