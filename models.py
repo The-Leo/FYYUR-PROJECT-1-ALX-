@@ -21,11 +21,12 @@ class Venue(db.Model):
     image_link = db.Column(db.String(), nullable=False)
     facebook_link = db.Column(db.String(120))
 # TODO:DONE implement any missing fields, as a database migration using Flask-Migrate
-    genres = db.Column(db.PickleType, nullable=False)
+    genres = db.Column(db.ARRAY(db.String), nullable=False)
     seeking_talent = db.Column(db.Boolean, nullable=False, default=False)
     seeking_description = db.Column(db.String(), nullable=False)
     website_link = db.Column(db.String(120))
-    shows = db.relationship('Show', backref='Venue', lazy=True)
+    shows = db.relationship('Show', backref='venue', lazy='joined', cascade="all, delete")
+    # shows = db.relationship('Show', backref='Venue', lazy=True)
   
 def __repr__(self):
     return f'<Venue ID: {self.id} name: {self.name}, city: {self.city}, state: {self.state}, phone: {self.phone}, image_link: {self.image_link}, facebook_link: {self.facebook_link}, genres: {self.genres}, {self.seeking_talent}>'
@@ -40,7 +41,7 @@ class Artist(db.Model):
     state = db.Column(db.String(120), nullable=False)
     address = db.Column(db.String(120))
     phone = db.Column(db.String(120), nullable=False)
-    genres = db.Column(db.PickleType, nullable=False)
+    genres = db.Column(db.ARRAY(db.String), nullable=False)
     image_link = db.Column(db.String(500), nullable=False)
     facebook_link = db.Column(db.String(120))
  # TODO:DONE implement any missing fields, as a database migration using Flask-Migrate 
@@ -48,7 +49,9 @@ class Artist(db.Model):
     seeking_talent = db.Column(db.Boolean, default=False)
     website_link = db.Column(db.String(120))
     seeking_description = db.Column(db.String(500), nullable=False)
-    shows = db.relationship('Show', backref='Artist', lazy=True)
+    shows = db.relationship('Show', backref='artist', lazy='joined', cascade="all, delete")
+
+    # shows = db.relationship('Show', backref='Artist', lazy=True)
 
 def __repr__(self):
     return f'<Artist ID: {self.id} name: {self.name}, city: {self.city}, phone: {self.phone}, genres: {self.genres}, image_link: {self.image_link}>'
